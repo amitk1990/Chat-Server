@@ -1,0 +1,42 @@
+<!doctype html>
+  <html>
+   <head>
+    <title>Amit Chat Application</title>
+    <link rel='stylesheet' href='style.css' type='text/css'/>
+    <link rel='stylesheet' href='reset.css' type='text/css'/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="chat.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="messageContainer" id="messageWindow">
+          <ul id="messages"></ul>
+          <div class="onlineStatus">
+              <ul id="onlineUser">
+              </ul>
+          </div>
+      </div>
+      <div class="controls">
+          <span id="notifyUser"></span>
+          <form id="form" action="">
+            <input type="hidden" id="user" value="" />
+            <input id="messageBox" autocomplete="off" placeholder="Type yor message here.." />
+            <input type="submit" id="button" value="Send" class="btn btn-primary" />
+          </form>
+      </div>
+    </div>
+    <div class="overlayContainer">
+      <div>
+          <h3>Welcome to Lets Chat</h3>
+          <form name="usernameForm" class="userForm form-inline">
+              <input type="text" class="form-control usernamedetails" value="" name="nameUser" placeholder="Enter User Name">
+              <button class="btn btn-primary" id="submitDetails">Submit</button>
+          </form>
+      </div>
+    </div>
+  </body>
+</html>
+

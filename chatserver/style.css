@@ -1,0 +1,108 @@
+.container{
+	width: 800px !important;
+	height: 600px;
+	float: left;
+	border:1px solid #ccc;
+}
+.messageContainer{
+	width: 800px;
+	height: 538px;
+	float: left;
+	overflow: auto;
+	overflow-x:hidden; 
+}
+.controls{
+	width: 100%;
+	height: 40px;
+	float: left;
+}
+#messageBox{
+	width: 91%;
+	height: 59px;
+	float: left;
+}
+#button{
+	margin: 13px 0px 0px 10px;
+}
+
+#messages{
+	text-decoration: none;
+	width: 72.5%;
+	height: 20px;
+	float: left;
+	margin: 10px 0px 0px 20px;
+}
+#messages li {
+	float: left;
+	width: 100%;
+}
+
+.onlineStatus{
+	width: 25%;
+	min-height: 538px;
+	float: right;
+	background: #ccc;
+	margin: 0px 0px 0px 0px;
+	overflow-x: hidden;
+	overflow-y: scroll;  
+}
+
+#onlineUser,#onlineUser li {
+	width: 100%;
+	height: 30px;
+	float: left;
+	border-bottom: 1px solid #000;
+	cursor: pointer;
+}
+
+.statusSym{
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin: 10px 0px 0px 10px;
+	border-radius: 10px;
+
+}
+.onlineSymbol{
+	background: green;
+}
+.offlineSymbol{
+	background: #ccc;
+}
+.userNameBox{
+	width: 70%;
+	height: 30px;
+	float: right;
+}
+.userNameBox span{
+	margin: 10px auto;
+	display: block;
+	float: left;
+}
+.overlayContainer{
+	width: 815px;
+	height: 600px;
+	position: absolute;
+	border: 1px solid #000;
+	background: #000;
+	opacity: 0.6;
+}
+.overlayContainer div{
+	width: 41%;
+	height: 100px;
+	margin: 200px auto;
+	background: #fff;
+}
+.userForm{
+	width: 300px;
+	height:30px;
+	margin: 0px 0px 0px 50px;
+	float: left;
+}
+.overlayContainer div h3 {
+	margin: 5px auto;
+	text-align: center;
+	display: block;
+	color: #000;
+	line-height: 2;
+}
