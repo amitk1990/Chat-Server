@@ -34,6 +34,7 @@ console.log("Listening to port 3000");
 
 // Actual Chat implementation
 var data="hello";
+var currentUser = "";
 
 
 io.sockets.on('connection',function(socket){
@@ -43,21 +44,16 @@ io.sockets.on('connection',function(socket){
 //User Connected
 socket.on('newUser',function(User){
 	console.log('new user joined '+User);
+	currentUser = User;
 	var userlist = helper.getUsersInChatRoom();
 	console.log("List of Users"+userlist)
 	socket.emit('currentUserinList',userlist);
-	helper.setUserStatus(User,"active");
+	helper.setUserStatus(User,"online");
 	console.log(User);
 	socket.broadcast.emit('userConnected',User);
 })
 
-// socket.on('checkUser',function(user,callback){
-// 	console.log('Checking status of '+user);
-// 	console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
-// 	var status = helper.checkUserPresent(user);
-// 	console.log(user+" status is "+status);
-// 	socket.emit('verifiedUserstatus',status);
-// })
+
 
 // Chat message sent
 socket.on('chatmessageSent',function(from,msg){
@@ -68,12 +64,19 @@ socket.on('chatmessageSent',function(from,msg){
 // disconnected message 
 socket.on('disconnect', function () {
 	console.log("Disconnected User");
-	socket.emit('disconnected');
+	helper.setUserStatus(currentUser,"offline")
+	io.emit('disconnected',currentUser);
 });
 
 })
 
-
+// socket.on('checkUser',function(user,callback){
+// 	console.log('Checking status of '+user);
+// 	console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+// 	var status = helper.checkUserPresent(user);
+// 	console.log(user+" status is "+status);
+// 	socket.emit('verifiedUserstatus',status);
+// })
 // io.socket.on('disconnect',function(){
 // 	console.log("disconnected");
 // 	io.emit('userisdisconnected',person);

@@ -56,7 +56,7 @@ module.exports = {
 		var userList = [];
 		var userObj = readFromJSONFile();
 		for(user in userObj){
-			if(userObj[user] == "active"){
+			if(userObj[user] == "online"){
 				userList.push(user);
 			}else{
 				// write logic

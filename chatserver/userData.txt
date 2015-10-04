@@ -1,1 +1,1 @@
-{"wat":"active","mttert":"active","ret":"active","genius":"active","timer":"active"}
+{"":"offline","kap":"offline","wat":"online"}
