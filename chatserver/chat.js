@@ -1,14 +1,20 @@
 var socket = io.connect('http://localhost:3000');
 var loginUser; 	// contains the name of client user
 var statusUser = false;
+
+/*
+	* Starter of the application
+*/
 $(document).ready(function(){
 	overlayDisplay(true);
-	$('.userForm').on('submit',function(e){
+	$('.userForm').on('submit',function(e){	// submit user form
 		e.preventDefault();
 		loginUser = $('.usernamedetails').val();
+		$('#user').val(loginUser);
 		overlayDisplay(false);
 		console.log(socket);
 		socket.emit('newUser',loginUser);
+		$('.userForm').val('');
 		return false;
 	});
 
@@ -94,7 +100,7 @@ socket.on('chatmessageSent',function(from,msg){
 	$('#messages').append('<li><b style="color:' + color + '">'+ from + '</b>:' + msg + '</li>');
 });
 
-socket.on('userisdisconnected',function(userName){
+socket.on('disconnected',function(userName){
 	$('#messages').append('<li><b style="color:red'+userName+" has left the chat room </b></li>");
 	$('.statusSym').removeClass('onlineSymbol').addClass('offlineSymbol');
 });

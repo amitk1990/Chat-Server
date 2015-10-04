@@ -45,25 +45,32 @@ io.sockets.on('connection',function(socket){
 socket.on('newUser',function(User){
 	console.log('new user joined '+User);
 	currentUser = User;
-	var userlist = helper.getUsersInChatRoom();
-	console.log("List of Users"+userlist)
-	socket.emit('currentUserinList',userlist);
 	helper.setUserStatus(User,"online");
 	console.log(User);
+	activeUsers();
 	socket.broadcast.emit('userConnected',User);
 })
 
+// list of active users emitted to everyone.
+function activeUsers(){
+	console.log("#############################");
+	var userlist = helper.getUsersInChatRoom();
+	console.log("List of Users"+userlist)
+	socket.emit('currentUserinList',userlist);
+}
 
 
 // Chat message sent
 socket.on('chatmessageSent',function(from,msg){
 	console.log(from+" "+msg);
+	activeUsers();
 	io.emit('chatmessageSent',from,msg);
 });
 
 // disconnected message 
 socket.on('disconnect', function () {
 	console.log("Disconnected User");
+	activeUsers();
 	helper.setUserStatus(currentUser,"offline")
 	io.emit('disconnected',currentUser);
 });
