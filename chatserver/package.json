@@ -12,6 +12,7 @@
     "express": "^4.10.2",
     "jsonfile": "^2.2.2",
     "socket.io": "~1.0.6",
-    "underscore": "~1.4.2"
+    "underscore": "~1.4.2",
+    "emoticons" : "~0.1.8"
   }
 }
